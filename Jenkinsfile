@@ -9,9 +9,9 @@ pipeline {
                 sh 'echo "Hello, World!"'
             }
         }
-        stage('Yum Update') {
+        stage('Install wget') {
             steps {
-                sh 'sudo yum update -y'
+                sh 'sudo yum install wget -y'
             }
         }
     }
