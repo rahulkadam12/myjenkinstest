@@ -3,16 +3,19 @@ pipeline {
         label 'jenkins-slave'
     }
     
+    parameters {
+        booleanParam(name: 'RUN_YUM_UPDATE', defaultValue: true, description: 'Run yum update?')
+    }
+    
     stages {
-        stage('Hello') {
-            steps {
-                sh 'echo "Hello, World!"'
+        stage('Yum Update') {
+            when {
+                expression { params.RUN_YUM_UPDATE }
             }
-        }
-        stage('Install wget') {
             steps {
-                sh 'sudo yum install wget -y'
+                sh 'sudo yum update -y'
             }
         }
     }
 }
+
