@@ -27,6 +27,7 @@ pipeline {
             }
             steps {
                 sh 'sudo yum update -y'
+                echo "$WORKSPACE"
             }
         }
     }
